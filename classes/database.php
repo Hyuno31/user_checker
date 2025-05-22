@@ -65,7 +65,56 @@ class database{
         }
  
     }
+
+ function loginUser($email, $password){
+    $con = $this->opencon();
+
+
+    $stmt = $con->prepare("SELECT * FROM users WHERE user_email = ?");
+    $stmt->execute([$email]);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC); // ← correct variable name here
+
+    if ($user && password_verify($password, $user['user_password'])){
+        return $user;
+    } else {
+        return false;
+    }
+
  
- 
+}
+
+
+function addauthors($firstname, $lastname, $birthday, $nationality){
+$con = $this->opencon();
+try{
+    $con->beginTransaction();
+    $stmt = $con->prepare("INSERT INTO authors (author_FN, author_LN, author_birthday, author_nat) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$firstname, $lastname, $birthday, $nationality]);
+    $authorId = $con -> lastInsertId();
+    $con->commit();
+    return $authorId;
+}catch (PDOException $e){
+    $con->rollback();
+    return false;
+
+}
+}
+
+function addGenre($name){
+    $con= $this->opencon();
+    try{
+        $con->beginTransaction();
+        $stmt = $con->prepare("INSERT INTO genres (genre_name)VALUES (?)");
+        $stmt ->execute([$name]);
+        $genreId=$con->lastInsertId();
+        $con->commit();
+        return true; 
+    }catch(PDOException $e){
+        $con->rollback();
+        return false;
+    }
+}
+
 }
 ?>

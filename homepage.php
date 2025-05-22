@@ -11,6 +11,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Library Management System</a>
+    <div class="d-flex ms-auto">
+        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+      </div>
     <a class="btn btn-outline-light ms-auto" href="borrow.html">Borrow Books</a>
     <div class="dropdown ms-2">
       <button class="btn btn-outline-light dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
