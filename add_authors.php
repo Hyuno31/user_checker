@@ -45,10 +45,8 @@ if (isset($_POST['add'])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
- 
+   <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
   <link rel="stylesheet" href="./package/dist/sweetalert2.css">
- 
   <title>Authors</title>
 </head>
 <body>
